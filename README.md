@@ -16,11 +16,11 @@ enfoque **BBA (Buffer-Based Approach)** del paper de Huang et al. (SIGCOMM 2014)
 
 ## Cómo ejecutar
 
-Requiere Python 3.9+. Desde la carpeta del proyecto (la que contiene `sim/`):
+Requiere Python 3.9+. Desde la carpeta del proyecto:
 
 ```bash
 pip install -r requirements.txt
-streamlit run sim/app.py
+streamlit run app.py
 ```
 
 Se abre en el navegador (por defecto http://localhost:8501). Desde la barra
@@ -29,7 +29,7 @@ lateral se cambian los parámetros y las gráficas/métricas se actualizan en vi
 Para una verificación rápida por consola (sin UI):
 
 ```bash
-python -m sim.run_demo
+python -m run_demo
 ```
 
 ## Qué se puede configurar (barra lateral)
@@ -48,17 +48,3 @@ python -m sim.run_demo
   caídas bruscas y provoca rebuffers innecesarios (mecanismo de la Fig. 4 del paper).
 - **BBA-0** — rate map lineal por tramos + cuantizador con histéresis (Algoritmo 1).
 - **Rmin siempre** — cota inferior de rebuffering (referencia).
-
-## Estructura
-
-```
-sim/
-  config.py       Configuración (dataclasses, escalera de bitrates, geometría).
-  network.py      Capacidad de red C(t) — perturbación externa.
-  algorithms.py   Leyes de control: Original, BBA-0, Rmin siempre.
-  simulator.py    Motor de lazo cerrado (dinámica del buffer).
-  metrics.py      Métricas de QoE y tabla comparativa.
-  plots.py        Gráficas (matplotlib).
-  app.py          UI en el navegador (Streamlit).
-  run_demo.py     Demo por consola (sin UI).
-```
